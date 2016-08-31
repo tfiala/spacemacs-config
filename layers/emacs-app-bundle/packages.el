@@ -3,13 +3,7 @@
         (magit :location elpa)))
 
 (defun emacs-app-bundle/post-init-magit ()
-    ;; We can't assume that the 'f' package will be loaded
-    ;; at this point, since another layer or the user may
-    ;; have excluded it from loading.  We wrap this here
-    ;; so that, in the event it is excluded, we essentially
-    ;; do nothing.
-    (with-eval-after-load 'magit
-      (emacs-app-bundle/set-emacsclient-path-as-needed)))
+  (emacs-app-bundle/set-emacsclient-path-as-needed))
 
 (defun emacs-app-bundle/set-emacsclient-path-as-needed ()
   ;; We only care when on macOS and the Emacs executable
