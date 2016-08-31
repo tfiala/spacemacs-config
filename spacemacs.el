@@ -34,10 +34,12 @@ values."
      erlang
      (git :variables
           git-gutter-use-fringe t)
+     gtags
      markdown
      org
      osx
      python
+     python-gtags
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
