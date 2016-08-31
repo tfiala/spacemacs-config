@@ -50,3 +50,11 @@ else
     echo ".spacemacs link exists, leaving as is"
 fi
 
+# Link this repository's layers into Spacemacs.
+PRIVATE_LAYERS_PATH="${SCRIPT_DIR}/layers"
+if [ -d "$PRIVATE_LAYERS_PATH" ]; then
+    for layer_path in $(find "$PRIVATE_LAYERS_PATH" -type d -depth 1); do
+        echo "Linking in private layer: ${layer_path}"
+        ln -s -f "$layer_path" "${EMACS_DIR}/private"
+    done
+fi
