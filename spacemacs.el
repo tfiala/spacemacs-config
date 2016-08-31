@@ -23,19 +23,20 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
+     auto-completion
      ;; better-defaults
+     c/c++
      clojure
      common-lisp
      elixir
      emacs-lisp
      erlang
-     git
+     (git :variables
+          git-gutter-use-fringe t)
      markdown
      org
      osx
      python
-     ;; scala
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -70,7 +71,8 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   ;; dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
@@ -257,29 +259,12 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
   (setq clojure-enable-fancify-symbols t)
-  (setq with-editor-emacsclient-executable "/usr/local/bin/emacsclient")
 
-  ;; For OS X:
-  ;;   - move meta to cmd
-  ;;   - move right option to ctrl
-  ;;
-  ;; This allows an Apple MacBook* to operate more comfortably.
-  ;; (when (eq system-type 'darwin)
-  ;;   (setq mac-control-modifier 'ctrl)
-  ;;   (setq mac-command-modifier 'meta)
-  ;;   (setq mac-option-modifier 'super)
+  ;; Magit is failing to find this.
+  ;; TODO figure out what exactly is failing.  There are better
+  ;; ways to address this.
+  (setq with-editor-emacsclient-executable "/Users/tfiala/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_9/emacsclient")
 
-  ;;   ;; We don't really care about the super modifier
-  ;;   ;; on the right side, so treat this like a laptop/mini
-  ;;   ;; keyboard setup all the time.
-  ;;   ;; (when is-laptop-keyboard
-  ;;   (when t
-  ;;     (setq mac-right-option-modifier 'ctrl)
-  ;;     (setq mac-right-command-modifier 'meta)
-  ;;     ;; Fallback for when we really do have a right control key.
-  ;;     ;; This would happen if we had a full keyboard plugged in.
-  ;;     (setq mac-right-control-modifier 'ctrl)))
+  ;; Setup our default lisp
+  (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
   )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
