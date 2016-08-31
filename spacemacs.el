@@ -25,10 +25,11 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
-     c/c++
+     c-c++
      clojure
      common-lisp
      elixir
+     emacs-app-bundle
      emacs-lisp
      erlang
      (git :variables
@@ -259,12 +260,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
   (setq clojure-enable-fancify-symbols t)
-
-  ;; Magit is failing to find this.
-  ;; TODO figure out what exactly is failing.  There are better
-  ;; ways to address this.
-  (setq with-editor-emacsclient-executable "/Users/tfiala/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_9/emacsclient")
-
   ;; Setup our default lisp
   (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
   )
