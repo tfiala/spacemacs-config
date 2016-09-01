@@ -25,7 +25,9 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
-     c-c++
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
      clojure
      common-lisp
      elixir
@@ -40,6 +42,7 @@ values."
      osx
      python
      python-gtags
+     semantic
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -119,7 +122,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
