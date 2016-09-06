@@ -28,7 +28,8 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
-     clojure
+     (clojure :variables
+              clojure-enable-fancify-symbols t)
      common-lisp
      elixir
      emacs-app-bundle
@@ -38,7 +39,8 @@ values."
           git-gutter-use-fringe t)
      gtags
      markdown
-     org
+     (org :variables
+          org-enable-github-support t)
      osx
      python
      python-gtags
@@ -255,7 +257,11 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  )
+  ;; Intentionally place C/C++ indentation style configuration in
+  ;; user-init.  For a discussion on why, see the following:
+  ;; https://github.com/syl20bnr/spacemacs/issues/4418
+  (setq-default c-default-style "linux")
+  (setq-default c-basic-offset 4))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -264,7 +270,6 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
-  (setq clojure-enable-fancify-symbols t)
   ;; Setup our default lisp
   (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
   )
