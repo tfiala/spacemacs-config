@@ -34,10 +34,12 @@ values."
      elixir
      emacs-app-bundle
      emacs-lisp
+     erc
      erlang
      (git :variables
           git-gutter-use-fringe t)
      gtags
+     llvm-dev
      markdown
      (org :variables
           org-enable-github-support t)
