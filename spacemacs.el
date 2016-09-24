@@ -31,6 +31,7 @@ values."
      (clojure :variables
               clojure-enable-fancify-symbols t)
      common-lisp
+     dockerfile
      elixir
      emacs-app-bundle
      emacs-lisp
@@ -53,6 +54,7 @@ values."
      spell-checking
      ssh-agent
      syntax-checking
+     tmux
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -274,5 +276,4 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
   ;; Setup our default lisp
-  (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
-  )
+  (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp"))
