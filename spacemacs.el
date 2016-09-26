@@ -31,7 +31,7 @@ values."
      (clojure :variables
               clojure-enable-fancify-symbols t)
      common-lisp
-     dockerfile
+     ;; dockerfile
      elixir
      emacs-app-bundle
      emacs-lisp
@@ -39,6 +39,7 @@ values."
      erlang
      (git :variables
           git-gutter-use-fringe t)
+     html
      gtags
      llvm-dev
      markdown
@@ -265,8 +266,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Intentionally place C/C++ indentation style configuration in
   ;; user-init.  For a discussion on why, see the following:
   ;; https://github.com/syl20bnr/spacemacs/issues/4418
-  (setq-default c-default-style "linux")
-  (setq-default c-basic-offset 4))
+  (setq-default c-default-style "bsd")
+  (setq-default c-basic-offset 2)
+  (setq-default evil-escape-key-sequence "jk"))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
