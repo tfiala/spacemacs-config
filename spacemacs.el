@@ -56,6 +56,7 @@ values."
      spell-checking
      ssh-agent
      syntax-checking
+     ;; themes-megapack
      tmux
      ;; version-control
      )
@@ -119,10 +120,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         solarized-light
+   dotspacemacs-themes '(solarized-light
                          solarized-dark
+                         spacemacs-dark
+                         spacemacs-light
                          leuven
                          monokai
                          zenburn)
@@ -269,6 +270,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; https://github.com/syl20bnr/spacemacs/issues/4418
   (setq-default c-default-style "bsd")
   (setq-default c-basic-offset 2)
+  ;; fix for emacs-26 (head branch)
+  ;; see https://github.com/justbur/emacs-which-key/issues/146
+  (defalias 'display-buffer-in-major-side-window 'window--make-major-side-window)
   (setq-default evil-escape-key-sequence "jk"))
 
 (defun dotspacemacs/user-config ()
