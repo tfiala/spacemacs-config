@@ -41,6 +41,7 @@ values."
           git-gutter-use-fringe t)
      html
      gtags
+     latex
      llvm-dev
      markdown
      (org :variables
@@ -278,4 +279,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
   ;; Setup our default lisp
-  (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp"))
+  (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
+  (setq cider-cljs-lein-repl
+        "(do (require 'figwheel-sidecar.repl-api)
+           (figwheel-sidecar.repl-api/start-figwheel!)
+           (figwheel-sidecar.repl-api/cljs-repl))"))
