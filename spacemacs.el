@@ -40,6 +40,7 @@ values."
      (git :variables
           git-gutter-use-fringe t)
      html
+     graphviz
      gtags
      latex
      llvm-dev
@@ -287,4 +288,23 @@ you should place you code here."
   (setq cider-cljs-lein-repl
         "(do (require 'figwheel-sidecar.repl-api)
            (figwheel-sidecar.repl-api/start-figwheel!)
-           (figwheel-sidecar.repl-api/cljs-repl))"))
+           (figwheel-sidecar.repl-api/cljs-repl))")
+  ;; Enable graphviz and dot in org-mode code blocks
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((clojure . t)
+     (dot . t)
+     (emacs-lisp . t)
+     (sh . t)))
+  ;; Support clojure in org-mode
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (require 'ob-clojure)
+              (setq org-babel-clojure-backend 'cider)
+              (require 'cider)
+              (setq org-edit-src-content-indentation 0
+                    org-src-tab-acts-natively t
+                    org-src-fontify-natively t
+                    org-confirm-babel-evaluate nil
+                    ;; org-support-shift-select 'always
+                    ))))
