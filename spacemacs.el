@@ -136,7 +136,7 @@ values."
                                :size 14
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.4)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -271,9 +271,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; https://github.com/syl20bnr/spacemacs/issues/4418
   (setq-default c-default-style "bsd")
   (setq-default c-basic-offset 2)
-  ;; fix for emacs-26 (head branch)
-  ;; see https://github.com/justbur/emacs-which-key/issues/146
-  (defalias 'display-buffer-in-major-side-window 'window--make-major-side-window)
+  (when (> emacs-major-version 25)
+    ;; fix for emacs-26 (head branch)
+    ;; see https://github.com/justbur/emacs-which-key/issues/146
+    (defalias 'display-buffer-in-major-side-window 'window--make-major-side-window))
   (setq-default evil-escape-key-sequence "jk"))
 
 (defun dotspacemacs/user-config ()
@@ -283,6 +284,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  ;; Stop emacs from asking about following symbolic links.
+  (setq vc-follow-symlinks t)
+
   ;; Setup our default lisp
   (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
   (setq cider-cljs-lein-repl
