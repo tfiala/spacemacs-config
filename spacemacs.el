@@ -38,7 +38,8 @@ values."
      erc
      erlang
      (git :variables
-          git-gutter-use-fringe t)
+          git-gutter-use-fringe t
+          org-enable-reveal-js-support t)
      html
      graphviz
      gtags
@@ -50,7 +51,7 @@ values."
      osx
      python
      python-gtags
-     semantic
+     ;; semantic
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -108,7 +109,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -293,22 +294,25 @@ you should place you code here."
         "(do (require 'figwheel-sidecar.repl-api)
            (figwheel-sidecar.repl-api/start-figwheel!)
            (figwheel-sidecar.repl-api/cljs-repl))")
-  ;; Enable graphviz and dot in org-mode code blocks
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((clojure . t)
-     (dot . t)
-     (emacs-lisp . t)
-     (sh . t)))
-  ;; Support clojure in org-mode
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (require 'ob-clojure)
-              (setq org-babel-clojure-backend 'cider)
-              (require 'cider)
-              (setq org-edit-src-content-indentation 0
-                    org-src-tab-acts-natively t
-                    org-src-fontify-natively t
-                    org-confirm-babel-evaluate nil
-                    ;; org-support-shift-select 'always
-                    ))))
+
+  ;; org-mode configuration
+  (with-eval-after-load 'org
+    ;; Enable graphviz and dot in org-mode code blocks
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((clojure . t)
+       (dot . t)
+       (emacs-lisp . t)
+       (sh . t)))
+    ;; Support clojure in org-mode
+    (add-hook 'org-mode-hook
+              (lambda ()
+                (require 'ob-clojure)
+                (setq org-babel-clojure-backend 'cider)
+                (require 'cider)
+                (setq org-edit-src-content-indentation 0
+                      org-src-tab-acts-natively t
+                      org-src-fontify-natively t
+                      org-confirm-babel-evaluate nil
+                      ;; org-support-shift-select 'always
+                      )))))
