@@ -39,10 +39,12 @@ values."
      erlang
      (git :variables
           git-gutter-use-fringe t
-          org-enable-reveal-js-support t)
+          org-enable-reveal-js-support t
+          org-projectile-file "TODO.org")
      html
      graphviz
      gtags
+     javascript
      latex
      llvm-dev
      markdown
@@ -315,4 +317,13 @@ you should place you code here."
                       org-src-fontify-natively t
                       org-confirm-babel-evaluate nil
                       ;; org-support-shift-select 'always
-                      )))))
+                      ))))
+  (with-eval-after-load 'org-agenda
+    (require 'org-projectile)
+    (push (org-projectile:todo-files) org-agenda-files))
+
+  ;; my org-mode prefix map
+  (spacemacs/declare-prefix "o" "org-mode")
+  (spacemacs/set-leader-keys "oi"
+    (cons "inbox"
+          (lambda () "inbox" (interactive) (find-file "~/Dropbox/org/inbox.org")))))
