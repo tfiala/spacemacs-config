@@ -41,12 +41,13 @@ values."
           git-gutter-use-fringe t
           org-enable-reveal-js-support t
           org-projectile-file "TODO.org")
-     html
      graphviz
      gtags
+     html
      javascript
+     journal
      latex
-     llvm-dev
+     ;; llvm-dev
      markdown
      (org :variables
           org-enable-github-support t)
