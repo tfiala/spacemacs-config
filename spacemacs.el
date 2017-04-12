@@ -45,12 +45,12 @@ values."
      gtags
      html
      javascript
-     journal
      latex
      ;; llvm-dev
      markdown
      (org :variables
-          org-enable-github-support t)
+          org-enable-github-support t
+          org-enable-org-journal-support t)
      osx
      python
      python-gtags
