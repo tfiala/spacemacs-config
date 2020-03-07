@@ -31,39 +31,27 @@ values."
      (clojure :variables
               clojure-enable-fancify-symbols t)
      common-lisp
-     ;; dockerfile
-     elixir
      emacs-app-bundle
      emacs-lisp
      erc
-     erlang
      (git :variables
           git-gutter-use-fringe t
           org-enable-reveal-js-support t
           org-projectile-file "TODO.org")
-     graphviz
-     gtags
      html
      javascript
-     latex
-     ;; llvm-dev
      markdown
      (org :variables
           org-enable-github-support t
           org-enable-org-journal-support t)
      osx
-     python
-     python-gtags
-     ;; semantic
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
      ssh-agent
      syntax-checking
-     ;; themes-megapack
      tmux
-     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these

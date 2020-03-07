@@ -53,7 +53,7 @@ fi
 # Link this repository's layers into Spacemacs.
 PRIVATE_LAYERS_PATH="${SCRIPT_DIR}/layers"
 if [ -d "$PRIVATE_LAYERS_PATH" ]; then
-    for layer_path in $(find "$PRIVATE_LAYERS_PATH" -maxdepth 1 -type d); do
+    for layer_path in $(find "$PRIVATE_LAYERS_PATH" -depth 1 -type d); do
         echo "Linking in private layer: ${layer_path}"
         ln -s -f "$layer_path" "${EMACS_DIR}/private"
     done
