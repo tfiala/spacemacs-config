@@ -40,7 +40,8 @@ values."
           org-projectile-file "TODO.org")
      html
      javascript
-     markdown
+     (markdown :variables
+               markdown-live-preview-engine 'vmd)
      (org :variables
           org-enable-github-support t
           org-enable-org-journal-support t)
@@ -52,6 +53,7 @@ values."
      ssh-agent
      syntax-checking
      tmux
+     twitter
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -315,4 +317,29 @@ you should place you code here."
   (spacemacs/declare-prefix "o" "org-mode")
   (spacemacs/set-leader-keys "oi"
     (cons "inbox"
-          (lambda () "inbox" (interactive) (find-file "~/Dropbox/org/inbox.org")))))
+          (lambda () "inbox" (interactive) (find-file "~/Dropbox/org/inbox.org"))))
+  (setq mac-command-modifier 'meta))
+
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol t)
+ '(safe-local-variable-values
+   (quote
+    ((cider-clojure-cli-global-options . "-A:dev")
+     (javascript-backend . tern)
+     (javascript-backend . lsp)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Source Code Pro" :foundry "nil" :slant normal :weight normal :height 140 :width normal)))))
+)
