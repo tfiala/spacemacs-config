@@ -35,16 +35,16 @@ values."
      emacs-lisp
      erc
      (git :variables
-          git-gutter-use-fringe t
-          org-enable-reveal-js-support t
-          org-projectile-file "TODO.org")
+          git-gutter-use-fringe t)
      html
      javascript
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      (org :variables
           org-enable-github-support t
-          org-enable-org-journal-support t)
+          org-enable-org-journal-support t
+          org-enable-reveal-js-support t
+          org-projectile-file "TODO.org")
      osx
      (shell :variables
             shell-default-height 30
@@ -269,7 +269,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
     ;; fix for emacs-26 (head branch)
     ;; see https://github.com/justbur/emacs-which-key/issues/146
     (defalias 'display-buffer-in-major-side-window 'window--make-major-side-window))
-  (setq-default evil-escape-key-sequence "jk"))
+  (setq-default evil-escape-key-sequence "jk")
+  (setq org-reveal-root "file:///Users/tfiala/src/reveal.js/"))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -296,7 +297,7 @@ you should place you code here."
      '((clojure . t)
        (dot . t)
        (emacs-lisp . t)
-       (sh . t)))
+       (shell . t)))
     ;; Support clojure in org-mode
     (add-hook 'org-mode-hook
               (lambda ()
