@@ -283,12 +283,16 @@ you should place you code here."
   (setq vc-follow-symlinks t)
 
   ;; Setup our default lisp
-  (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
+  ;; (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
+  (setq inferior-lisp-program "/Users/tfiala/lisps/lispworks/lispworks-tty-7.1.2")
   (setq cider-cljs-lein-repl
         "(do (require 'figwheel-sidecar.repl-api)
            (figwheel-sidecar.repl-api/start-figwheel!)
            (figwheel-sidecar.repl-api/cljs-repl))")
 
+  ;; Clojure/CIDER eval of last sexp - when on the last paren at EOLN, this
+  ;; should eval the sexp that ends with that last character.
+  (setq evil-move-beyond-eol t)
   ;; org-mode configuration
   (with-eval-after-load 'org
     ;; Enable graphviz and dot in org-mode code blocks
@@ -319,7 +323,13 @@ you should place you code here."
   (spacemacs/set-leader-keys "oi"
     (cons "inbox"
           (lambda () "inbox" (interactive) (find-file "~/Dropbox/org/inbox.org"))))
-  (setq mac-command-modifier 'meta))
+  (setq mac-command-modifier 'meta)
+
+  ;; address dired gls usage on macOS
+  (let ((gls (executable-find "gls")))
+    (when gls
+      (setq insert-directory-program gls
+            dired-listing-switches "-aBhl --group-directories-first"))))
 
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
