@@ -24,20 +24,14 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;; better-defaults
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
      (clojure :variables
               clojure-enable-fancify-symbols t)
-     common-lisp
-     emacs-app-bundle
      emacs-lisp
-     erc
      (git :variables
           git-gutter-use-fringe t)
-     html
-     javascript
      (markdown :variables
                markdown-live-preview-engine 'vmd)
      (org :variables
@@ -45,22 +39,20 @@ values."
           org-enable-org-journal-support t
           org-enable-reveal-js-support t
           org-projectile-file "TODO.org")
-     osx
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
-     ssh-agent
      syntax-checking
      tmux
-     twitter
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(solarized-theme)
    ;; A list of packages and/or extensions that will not be install and loaded.
+
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -270,7 +262,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
     ;; see https://github.com/justbur/emacs-which-key/issues/146
     (defalias 'display-buffer-in-major-side-window 'window--make-major-side-window))
   (setq-default evil-escape-key-sequence "jk")
-  (setq org-reveal-root "file:///Users/tfiala/src/reveal.js/"))
+  (setq org-reveal-root "file:///home/tfiala/src/reveal.js/"))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -283,8 +275,8 @@ you should place you code here."
   (setq vc-follow-symlinks t)
 
   ;; Setup our default lisp
-  ;; (setq inferior-lisp-program "/Users/tfiala/lisps/acl90-smp.64/alisp")
-  (setq inferior-lisp-program "/Users/tfiala/lisps/lispworks/lispworks-tty-7.1.2")
+  ;; (setq inferior-lisp-program "/home/tfiala/lisps/acl90-smp.64/alisp")
+  (setq inferior-lisp-program "/home/tfiala/lisps/lispworks/lispworks-tty-7.1.2")
   (setq cider-cljs-lein-repl
         "(do (require 'figwheel-sidecar.repl-api)
            (figwheel-sidecar.repl-api/start-figwheel!)
